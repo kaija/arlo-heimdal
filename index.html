@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Heimdal helps families spot scam signals early while keeping the protected person's privacy in control." />
+    <title>Heimdal — a quieter way to protect family</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="vendor/arlo/styles.css" />
+    <style>
+      .brand-mark { display:grid; place-items:center; width:28px; height:28px; border-radius:var(--radius-mark); background:var(--color-accent); color:#fff; font-size:15px; font-weight:700; letter-spacing:-.08em; }
+      .hero-product { padding:144px 0 96px; overflow:hidden; }
+      .hero-product .container { display:grid; grid-template-columns:minmax(0, 1fr) minmax(430px, .88fr); align-items:center; gap:72px; }
+      .hero-copy { padding:32px 0; }
+      .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border:1px solid var(--color-border); border-radius:var(--radius-pill); background:var(--color-bg); color:var(--color-text-secondary); font-family:var(--font-mono); font-size:var(--fs-xs); }
+      .eyebrow-dot { width:7px; height:7px; border-radius:50%; background:var(--color-success); }
+      .hero-copy h1 { max-width:620px; margin:20px 0; font-size:3.5rem; font-weight:700; line-height:1.1; letter-spacing:-.03em; }
+      .hero-copy p { max-width:560px; margin:0 0 30px; color:var(--color-text-secondary); font-size:1.125rem; line-height:1.7; }
+      .trust-line { display:flex; align-items:center; gap:10px; margin-top:26px; color:var(--color-text-tertiary); font-size:13px; }
+      .trust-line svg { color:var(--color-accent); flex:0 0 auto; }
+      .monitor-card { overflow:hidden; background:var(--color-bg); border:1px solid var(--color-border-strong); border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); }
+      .monitor-top { display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--color-border); }
+      .monitor-person { display:flex; align-items:center; gap:10px; }
+      .person-avatar { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; background:var(--color-accent-light); color:var(--color-accent); font-size:13px; font-weight:600; }
+      .monitor-person strong, .alert-copy strong { display:block; font-size:13px; font-weight:600; }
+      .monitor-person span, .alert-copy span { display:block; margin-top:2px; color:var(--color-text-tertiary); font-size:12px; }
+      .status { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; border-radius:var(--radius-pill); background:var(--color-success-light); color:var(--color-success); font-size:12px; font-weight:600; }
+      .status i { width:6px; height:6px; border-radius:50%; background:currentColor; }
+      .monitor-body { padding:18px 20px 20px; background:var(--color-bg-secondary); }
+      .monitor-label { margin:0 0 10px; color:var(--color-text-tertiary); font-size:12px; font-weight:600; }
+      .alert-surface { padding:16px; border:1px solid rgba(192,122,18,.22); border-radius:12px; background:#fff; }
+      .alert-line { display:flex; align-items:flex-start; gap:12px; }
+      .alert-icon { display:grid; place-items:center; flex:0 0 auto; width:32px; height:32px; border-radius:8px; background:var(--color-warning-light); color:var(--color-warning); }
+      .alert-copy { flex:1; }
+      .alert-copy p { margin:7px 0 0; color:var(--color-text-secondary); font-size:12px; line-height:1.55; }
+      .confidence { margin-top:12px; }
+      .confidence-row { display:flex; justify-content:space-between; margin-bottom:6px; color:var(--color-text-tertiary); font-size:11px; }
+      .confidence-row b { color:var(--color-warning); font-weight:600; }
+      .track { height:5px; overflow:hidden; border-radius:99px; background:var(--color-bg-tertiary); }
+      .track span { display:block; width:72%; height:100%; border-radius:inherit; background:var(--color-warning); }
+      .monitor-actions { display:flex; gap:8px; margin-top:14px; }
+      .mini-button { flex:1; padding:8px; border:1px solid var(--color-border-strong); border-radius:var(--radius-pill); background:var(--color-bg); color:var(--color-text-primary); font:500 12px var(--font-sans); }
+      .mini-button:first-child { border-color:var(--color-accent); background:var(--color-accent); color:#fff; }
+      .activity { display:flex; align-items:center; gap:10px; padding:15px 4px 0; color:var(--color-text-secondary); font-size:12px; }
+      .activity svg { color:var(--color-accent); }
+      .guardrail { padding:28px; border:1px solid var(--color-border); border-radius:var(--radius-lg); background:var(--color-bg); }
+      .guardrail h3 { margin:0 0 20px; font-size:1rem; letter-spacing:-.01em; }
+      .guardrail-list { display:grid; gap:14px; margin:0; padding:0; list-style:none; }
+      .guardrail-list li { display:flex; gap:10px; color:var(--color-text-secondary); font-size:14px; line-height:1.5; }
+      .guardrail-list svg { flex:0 0 auto; color:var(--color-success); margin-top:1px; }
+      .guardrail-note { margin:20px 0 0; padding-top:18px; border-top:1px solid var(--color-border); color:var(--color-text-tertiary); font-size:12px; line-height:1.6; }
+      .principles { padding:100px 0; }
+      .principle-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
+      .principle { padding:28px; border-top:1px solid var(--color-border-strong); }
+      .principle-number { color:var(--color-accent); font-family:var(--font-mono); font-size:12px; }
+      .principle h3 { margin:14px 0 8px; font-size:1.125rem; letter-spacing:-.01em; }
+      .principle p { max-width:440px; margin:0; color:var(--color-text-secondary); font-size:14px; line-height:1.6; }
+      .workflow { padding:100px 0; background:var(--color-bg-secondary); }
+      .workflow-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+      .workflow-card { position:relative; padding:30px 28px; border:1px solid var(--color-border); border-radius:var(--radius-lg); background:var(--color-bg); }
+      .workflow-step { display:grid; place-items:center; width:30px; height:30px; margin-bottom:22px; border-radius:50%; background:var(--color-accent-light); color:var(--color-accent); font:600 12px var(--font-mono); }
+      .workflow-card h3 { margin:0 0 8px; font-size:1rem; letter-spacing:-.01em; }
+      .workflow-card p { margin:0; color:var(--color-text-secondary); font-size:14px; line-height:1.6; }
+      .privacy { padding:100px 0; }
+      .privacy-panel { display:grid; grid-template-columns:1fr 1fr; gap:52px; padding:48px; border:1px solid var(--color-border); border-radius:var(--radius-xl); background:var(--color-bg-secondary); }
+      .privacy-panel h2 { margin:0 0 14px; font-size:2rem; line-height:1.2; letter-spacing:-.02em; }
+      .privacy-panel > div > p { max-width:480px; margin:0; color:var(--color-text-secondary); font-size:16px; line-height:1.65; }
+      .consent-points { display:grid; gap:14px; }
+      .consent-point { display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--color-border); }
+      .consent-point:last-child { border:0; padding-bottom:0; }
+      .consent-point span { display:grid; place-items:center; flex:0 0 auto; width:28px; height:28px; border-radius:8px; background:var(--color-accent-light); color:var(--color-accent); font:500 12px var(--font-mono); }
+      .consent-point strong { display:block; margin-bottom:3px; font-size:14px; }
+      .consent-point p { margin:0; color:var(--color-text-secondary); font-size:13px; line-height:1.5; }
+      .cta { padding:92px 0; border-top:1px solid var(--color-border); text-align:center; }
+      .cta h2 { max-width:600px; margin:0 auto 16px; font-size:2rem; line-height:1.2; letter-spacing:-.02em; }
+      .cta p { max-width:520px; margin:0 auto 28px; color:var(--color-text-secondary); font-size:16px; line-height:1.6; }
+      .modal { width:min(440px, calc(100% - 32px)); padding:0; border:1px solid var(--color-border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xl); color:var(--color-text-primary); }
+      .modal::backdrop { background:var(--color-scrim); }
+      .modal-inner { padding:28px; }
+      .modal h2 { margin:0 0 10px; font-size:1.25rem; letter-spacing:-.02em; }
+      .modal p { margin:0 0 22px; color:var(--color-text-secondary); line-height:1.6; }
+      .modal-actions { display:flex; justify-content:flex-end; gap:10px; }
+      @media (max-width:900px) { .hero-product .container { grid-template-columns:1fr; gap:28px; } .hero-copy { padding-bottom:0; text-align:center; } .hero-copy h1, .hero-copy p { margin-left:auto; margin-right:auto; } .trust-line { justify-content:center; } .monitor-card { max-width:560px; width:100%; margin:0 auto; } .privacy-panel { grid-template-columns:1fr; gap:32px; } }
+      @media (max-width:640px) { .hero-product { padding:116px 0 64px; } .hero-copy h1 { font-size:2.5rem; } .principle-grid, .workflow-grid { grid-template-columns:1fr; } .privacy-panel { padding:28px 24px; } .privacy-panel h2 { font-size:1.75rem; } }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="#top" aria-label="Heimdal home"><span class="brand-mark" aria-hidden="true">H</span><span>Heimdal</span></a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#principles">Principles</a>
+          <a href="#consent">Consent</a>
+          <button class="btn btn-sm" type="button" data-open-dialog>Preview service</button>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero-product" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Family scam protection · read-only</span>
+            <h1 id="hero-title">A quieter way to protect the people you love.</h1>
+            <p>Heimdal watches for scam signals in the messages a family member has agreed to share—then brings you in only when a moment needs care.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#how-it-works">See how it works <span aria-hidden="true">→</span></a>
+              <a class="btn btn-secondary" href="#consent">How consent works</a>
+            </div>
+            <div class="trust-line">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg>
+              You see an alert and the evidence needed to respond—not a private inbox.
+            </div>
+          </div>
+
+          <div class="monitor-card" aria-label="Example Heimdal scam alert">
+            <div class="monitor-top">
+              <div class="monitor-person"><span class="person-avatar">YL</span><div><strong>Yun Lin</strong><span>Protection is active</span></div></div>
+              <span class="status"><i></i>Connected</span>
+            </div>
+            <div class="monitor-body">
+              <p class="monitor-label">Needs your attention</p>
+              <div class="alert-surface">
+                <div class="alert-line">
+                  <span class="alert-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 2.9 1.8 17a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 2.9a2 2 0 0 0-3.4 0Z" /><path d="M12 9v4M12 17h.01" /></svg></span>
+                  <div class="alert-copy"><strong>Possible impersonation</strong><span>Detected in a WhatsApp conversation</span><p>Requested a transfer after claiming to be a family member with a new number.</p></div>
+                </div>
+                <div class="confidence"><div class="confidence-row"><span>Confidence</span><b>72% · Review recommended</b></div><div class="track"><span></span></div></div>
+                <div class="monitor-actions"><button class="mini-button" type="button">Review safely</button><button class="mini-button" type="button">Mark as safe</button></div>
+              </div>
+              <div class="activity"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10" /><path d="M12 6v6l4 2" /></svg>Last checked a few moments ago · no messages were changed</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow" id="how-it-works" aria-labelledby="workflow-title">
+        <div class="container">
+          <header class="section-header"><h2 id="workflow-title">Early signals. Human decisions.</h2><p>Heimdal handles the watching without taking control away from the person being protected.</p></header>
+          <div class="workflow-grid">
+            <article class="workflow-card"><span class="workflow-step">01</span><h3>Set the boundary together</h3><p>The account owner chooses what a guardian can see, then can reduce access or revoke consent whenever they want.</p></article>
+            <article class="workflow-card"><span class="workflow-step">02</span><h3>Spot what does not look right</h3><p>Local rules screen every message first. More involved analysis is reserved for the small number of conversations that need it.</p></article>
+            <article class="workflow-card"><span class="workflow-step">03</span><h3>Get a useful heads-up</h3><p>When risk is credible, Heimdal sends the guardian an alert with confidence, limited evidence, and a clear next step.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="principles" id="principles" aria-labelledby="principles-title">
+        <div class="container">
+          <header class="section-header"><h2 id="principles-title">Protection has to respect the person it protects.</h2><p>Every product decision starts with the account owner’s dignity, privacy, and ability to say no.</p></header>
+          <div class="principle-grid">
+            <article class="principle"><span class="principle-number">01 / Read-only</span><h3>It never sends, replies, reacts, or marks messages as read.</h3><p>Heimdal is there to notice and explain. It does not speak or act as someone else.</p></article>
+            <article class="principle"><span class="principle-number">02 / Visible by design</span><h3>There are no hidden connections.</h3><p>The protected person knows Heimdal is active and can disconnect it from the platform’s own linked-device controls.</p></article>
+            <article class="principle"><span class="principle-number">03 / Private by default</span><h3>Analysis and visibility are not the same thing.</h3><p>The system may need to inspect messages for risk; a guardian receives only the alert context the person agreed to share.</p></article>
+            <article class="principle"><span class="principle-number">04 / Human-led</span><h3>An alert is a reason to check in, not a verdict.</h3><p>Heimdal shows its confidence and evidence so families can decide what to do with care.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-labelledby="guardrails-title">
+        <div class="container">
+          <header class="section-header"><h2 id="guardrails-title">Built to be helpful without becoming intrusive.</h2><p>Guardrails are part of the service, not a setting buried in the fine print.</p></header>
+          <div class="features-grid">
+            <article class="feature-card"><span class="feature-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /></svg></span><h3>Visible access levels</h3><p>The person being protected selects how much alert context a guardian can receive. More access always requires renewed consent.</p></article>
+            <article class="feature-card"><span class="feature-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg></span><h3>Local-first screening</h3><p>Fast, predictable checks happen close to home. Only the necessary message fragments move to deeper analysis.</p></article>
+            <article class="feature-card"><span class="feature-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18" /><path d="M5.6 5.6 18.4 18.4M18.4 5.6 5.6 18.4" /></svg></span><h3>Scam links stay closed</h3><p>Links extracted from suspicious messages are never opened. An alert makes the risk visible without giving a scammer a signal back.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="privacy" id="consent" aria-labelledby="consent-title">
+        <div class="container">
+          <div class="privacy-panel">
+            <div><h2 id="consent-title">Consent is the starting point.</h2><p>Heimdal is for families where everyone understands what is connected, what can be seen, and how to turn it off.</p></div>
+            <div class="consent-points">
+              <div class="consent-point"><span>01</span><div><strong>Choose the guardian</strong><p>The account owner decides who receives safety alerts.</p></div></div>
+              <div class="consent-point"><span>02</span><div><strong>Choose the visibility level</strong><p>Default access is limited to alert cards and a small amount of supporting evidence.</p></div></div>
+              <div class="consent-point"><span>03</span><div><strong>Change your mind anytime</strong><p>Lower visibility immediately, or revoke consent entirely through the connected platform.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <div class="container"><h2 id="cta-title">The best alert is one that arrives early enough for a conversation.</h2><p>Heimdal is being built for families who want a little more time, without giving up trust along the way.</p><button class="btn btn-primary" type="button" data-open-dialog>Explore the service <span aria-hidden="true">→</span></button></div>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="container footer-inner"><div class="footer-brand"><span class="brand-mark" aria-hidden="true" style="width:22px;height:22px;font-size:12px">H</span><span>Heimdal · Family scam protection</span></div><div class="footer-links"><a href="#principles">Our principles</a><a href="#consent">Consent</a></div></div></footer>
+
+    <dialog class="modal" aria-labelledby="dialog-title">
+      <div class="modal-inner"><h2 id="dialog-title">A service built with care.</h2><p>This standalone preview introduces Heimdal’s approach to family scam protection. It does not collect information or connect to any accounts.</p><div class="modal-actions"><button class="btn btn-secondary" type="button" data-close-dialog>Close</button><a class="btn btn-primary" href="#principles" data-close-dialog>Read our principles</a></div></div>
+    </dialog>
+
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const links = document.querySelector('.nav-links');
+      const dialog = document.querySelector('dialog');
+      toggle.addEventListener('click', () => { const open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); });
+      document.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
+      document.querySelectorAll('[data-open-dialog]').forEach((button) => button.addEventListener('click', () => dialog.showModal()));
+      document.querySelectorAll('[data-close-dialog]').forEach((button) => button.addEventListener('click', () => dialog.close()));
+    </script>
+  </body>
+</html>
