@@ -1,4 +1,4 @@
-name: Deploy Heimdal site to GitHub Pages
+name: Deploy Arlo site to GitHub Pages
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
       - name: Stage static site
         run: |
           mkdir _site
-          cp -R index.html assets vendor _site/
+          cp -R index.html assets vendor docs _site/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
